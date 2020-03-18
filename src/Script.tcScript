@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="Jira" key="{30BA79F2-753C-4ABA-8F21-68302E547A7B}" path="Jira.sj" />
+		<child name="JiraRTO" key="{EE39D9BE-6523-4E23-814D-E6783036FA22}" path="JiraRTO.sj" />
+		<child name="JiraIssueData" key="{0AA77B10-BC04-41FE-9BA8-74D618870DF2}" path="JiraIssueData.sj" />
+	</children>
+</Root>

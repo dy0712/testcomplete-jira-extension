@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="14.0" key="{E8264807-6FDB-4A48-B8B4-E61A54F8FACB}">
+	<children>
+		<child name="JiraScriptExtension" key="{92F1EC52-410B-4F59-B6A9-D969707C9570}" path="JiraScriptExtension.mds" />
+	</children>
+	<testItems key="{420FFA10-889E-4056-ACA9-D8D1181FD2C1}">
+		<children>
+			<testItem key="{92F1EC52-410B-4F59-B6A9-D969707C9570}" enabled="True" timeout="0" stopOnError="True" description="" />
+		</children>
+	</testItems>
+	<variables key="{32C6E508-B142-4381-B535-FEA0E2B5BA2D}">
+		<data Version="3" />
+	</variables>
+	<analysis key="{55800562-025E-487A-A008-A38099463D83}" />
+	<scc key="{00000000-0000-0000-0000-000000000000}" name="">
+		<data />
+	</scc>
+	<extender key="{1A3FC97E-9A66-4716-B166-35D10B4146E0}">
+		<CrossBrowserTesting Enable="True" />
+	</extender>
+</Root>

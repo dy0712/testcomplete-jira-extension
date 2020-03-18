@@ -1,0 +1,37 @@
+<ScriptExtensionGroup>
+  <Category Name="Runtime Objects">
+    <ScriptExtension Name = "Jira Object" Author="SmartBear Software" Version="1.0" HomePage="www.smartbear.com">
+      <Script Name = "JiraSupport.js">
+        <RuntimeObject Name = "Jira">
+<!--AK-->          <Method Name="Login" Routine="RTO_Login">
+            Logs in to Jira. Returns true if the login was successful, false otherwise.
+          </Method>
+<!--AK-->          <Method Name="CreateNewBugData" Routine="RTO_CreateNewBugData">
+            Creates an object that has data for creating a Jira issue of the Bug type.
+          </Method>
+<!--AK-->          <Method Name="CreateNewIssueData" Routine="RTO_CreateNewIssueData">
+            Creates an object that has data for creating a Jira issue of any type available in your Jira project.
+          </Method>
+<!--AK-->          <Method Name="CreateUpdateIssueData" Routine="RTO_CreateUpdateIssueData">
+            Creates an object that has data for updating a Jira issue.
+          </Method>
+<!--AK-->          <Method Name="PostIssue" Routine="RTO_PostIssue">
+            Creates a new issue in Jira. If succeeded, returns the issue Id, an empty string otherwise.
+          </Method>
+<!--AK-->          <Method Name="UpdateIssue" Routine="RTO_UpdateIssue">
+            Updates an existing issue in Jira. If succeeded, returns true, false otherwise.
+          </Method>
+<!--AK-->          <Method Name="PostAttachment" Routine="RTO_PostAttachment">
+            Attaches a file to the specified Jira issue. If succeeded, returns true, false otherwise.
+          </Method>
+<!--AK-->          <Description>
+            A Jira client object.
+          </Description>
+        </RuntimeObject>
+      </Script>
+<!--AK-->      <Description>
+        Provides scripting objects to create and update Jira issues from tests.
+      </Description>
+    </ScriptExtension>
+  </Category>
+</ScriptExtensionGroup>
