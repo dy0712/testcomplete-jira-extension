@@ -16,7 +16,7 @@ Click **OK** to install the extension into TestComplete.
 
     Click **OK** to save the changes.
 ## Usage
-``` 
+```js
 // JavaScript
 
 // Create a Task item in Jira
