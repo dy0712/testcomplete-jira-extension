@@ -255,7 +255,7 @@ var jiraConnection = {
 
       var fileName = aqFileSystem.GetFileName(attachmentFileName);
       var data = "--" + multipart_boundary + "\r\nContent-Disposition: form-data; name=\"file\"; filename=\"" +
-        fileName + "\"\r\nContent-Type: image/*\r\nContent-Transfer-Encoding: base64\r\n\r\n";
+        fileName + "\"\r\nContent-Type: multipart/form-data\r\nContent-Transfer-Encoding: base64\r\n\r\n";
 
       data += aqFile.ReadWholeTextFile(attachmentFileName, aqFile.ctANSI);
       data += "\r\n--" + multipart_boundary + "--\r\n";
