@@ -255,7 +255,7 @@ var jiraConnection = {
 
       var fileName = aqFileSystem.GetFileName(attachmentFileName);
       var data = "--" + multipart_boundary + "\r\nContent-Disposition: form-data; name=\"file\"; filename=\"" +
-        fileName + "\"\r\nContent-Type: multipart/form-data\r\nContent-Transfer-Encoding: base64\r\n\r\n";
+        fileName + "\"\r\nContent-Type: image/*\r\nContent-Transfer-Encoding: base64\r\n\r\n";
 
       data += aqFile.ReadWholeTextFile(attachmentFileName, aqFile.ctANSI);
       data += "\r\n--" + multipart_boundary + "--\r\n";
@@ -263,7 +263,7 @@ var jiraConnection = {
       this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
       this.m_xmlhttp.setRequestHeader("X-Atlassian-Token", "nocheck");
       this.m_xmlhttp.setRequestHeader("Content-Length", data.length);
-      this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("image/*; boundary=%s", multipart_boundary));
+      this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("multipart/form-data; boundary=%s", multipart_boundary));
 
       try {
         this.m_xmlhttp.send(data);
