@@ -66,9 +66,12 @@ var jiraConnection = {
       else
         this.throwError(aqString.Format(umsg_OpenConnectFail, this.m_serverUrl, e.message));
     }
-
+     
+    $fileDir = "/usr/local/apache/htdocs/uploads";
+    $fullPath = $fileDir."/".$filename;
     $size = filesize($fullPath);
     
+    this.m_xmlhttp.setRequestHeader("Content-Transfer-Encoding: binary");
     this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
     this.m_xmlhttp.setRequestHeader("Content-type", "application/json");
     this.m_xmlhttp.setRequestHeader("Content-length", $size);
