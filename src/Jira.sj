@@ -262,7 +262,7 @@ var jiraConnection = {
 
       this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
       this.m_xmlhttp.setRequestHeader("X-Atlassian-Token", "nocheck");
-      this.m_xmlhttp.setRequestHeader("Content-Length", data.length);
+      this.m_xmlhttp.setRequestHeader("Content-Length: ".$size);
       this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("multipart/form-data; boundary=%s", multipart_boundary));
 
       try {
