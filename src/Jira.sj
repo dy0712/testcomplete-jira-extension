@@ -67,11 +67,16 @@ var jiraConnection = {
         this.throwError(aqString.Format(umsg_OpenConnectFail, this.m_serverUrl, e.message));
     }
 
-    this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
-    this.m_xmlhttp.setRequestHeader("Content-type", "application/json");
-    this.m_xmlhttp.setRequestHeader("Content-length", data.length);
-    this.m_xmlhttp.setRequestHeader("Accept", "multipart/form-data, image/*; q=0.9, image/*; q=0.8");
-    this.m_xmlhttp.setRequestHeader("Accept-Charset", "UTF-8, *;q=0.8");
+$fullPath = $fileDir."/".$filename;
+$size = filesize($fullPath);
+
+    this.m_xmlhttp.setRequestHeader("Content-Type: application/octet-stream");
+    this.m_xmlhttp.setRequestHeader("Content-Disposition: attachment; filename=".$filename."");
+    this.m_xmlhttp.setRequestHeader("Content-Transfer-Encoding: binary");
+    this.m_xmlhttp.setRequestHeader("Content-Length: ".$size);
+    this.m_xmlhttp.setRequestHeader("Cache-Control: cache, must-revalidate");
+    this.m_xmlhttp.setRequestHeader("Pragma: no-cache");
+    this.m_xmlhttp.setRequestHeader("Expires: 0");
 
     try {
       this.m_xmlhttp.send(data);
