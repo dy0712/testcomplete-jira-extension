@@ -259,15 +259,9 @@ var jiraConnection = {
 
       data += aqFile.ReadWholeTextFile(attachmentFileName, aqFile.ctANSI);
       data += "\r\n--" + multipart_boundary + "--\r\n";
-  
-      $fileDir = "/jira/secure/attachment/223215/sky.JPG";
-      $fullPath = $fileDir."/".$filename;
-      $size = filesize($fullPath);
 	
       this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
-      this.m_xmlhttp.setRequestHeader("Content-Disposition: attachment; filename=".$filename."");
       this.m_xmlhttp.setRequestHeader("X-Atlassian-Token", "nocheck");
-      this.m_xmlhttp.setRequestHeader("Content-Length".$size);
       this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("multipart/form-data; boundary=%s", multipart_boundary));
 
       try {
