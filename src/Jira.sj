@@ -66,16 +66,11 @@ var jiraConnection = {
       else
         this.throwError(aqString.Format(umsg_OpenConnectFail, this.m_serverUrl, e.message));
     }
-     
-    $fileDir = "/usr/local/apache/htdocs/uploads";
-    $fullPath = $fileDir."/".$filename;
-    $size = filesize($fullPath);
-    
-    this.m_xmlhttp.setRequestHeader("Content-Transfer-Encoding: binary");
+
     this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
     this.m_xmlhttp.setRequestHeader("Content-type", "application/json");
-    this.m_xmlhttp.setRequestHeader("Content-length", $size);
-    this.m_xmlhttp.setRequestHeader("Accept", "multipart/form-data, image/*; q=0.9, image/*; q=0.8");
+    this.m_xmlhttp.setRequestHeader("Content-length", data.length);
+    this.m_xmlhttp.setRequestHeader("Accept", "application/json, image/*; q=0.9, image/*; q=0.8");
     this.m_xmlhttp.setRequestHeader("Accept-Charset", "UTF-8, *;q=0.8");
 
     try {
@@ -260,14 +255,14 @@ var jiraConnection = {
 
       var fileName = aqFileSystem.GetFileName(attachmentFileName);
       var data = "--" + multipart_boundary + "\r\nContent-Disposition: form-data; name=\"file\"; filename=\"" +
-        fileName + "\"\r\nContent-Type: multipart/form-data\r\nContent-Transfer-Encoding: base64\r\n\r\n";
+        fileName + "\"\r\nContent-Type: image/*\r\nContent-Transfer-Encoding: base64\r\n\r\n";
 
       data += aqFile.ReadWholeTextFile(attachmentFileName, aqFile.ctANSI);
       data += "\r\n--" + multipart_boundary + "--\r\n";
 
       this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
       this.m_xmlhttp.setRequestHeader("X-Atlassian-Token", "nocheck");
-      this.m_xmlhttp.setRequestHeader("Content-Length: ".$size);
+      this.m_xmlhttp.setRequestHeader("Content-Length", data.length);
       this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("multipart/form-data; boundary=%s", multipart_boundary));
 
       try {
