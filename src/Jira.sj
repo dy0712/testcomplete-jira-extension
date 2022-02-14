@@ -267,7 +267,7 @@ var jiraConnection = {
 	
      var formData = new FormData();
          formData.append('imageFile', document.getElementById('formElem')[0].files[0]);
-         fetch('api/reservations/'+reservationInfoId+'/comments?comment='+comment+'&productId='+productId+'&score='+score, {
+         fetch('/rest/api/2/issue/" + issueKey, JSON.stringify(dataObject), {
         method: 'post',
         headers: {
             // 'Content-Type': 'multipart/form-data'
