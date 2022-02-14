@@ -68,9 +68,9 @@ var jiraConnection = {
     }
 
     this.m_xmlhttp.setRequestHeader("Authorization", this.createAuthHeaderData());
-    this.m_xmlhttp.setRequestHeader("Content-type", "application/json");
+    this.m_xmlhttp.setRequestHeader("Content-type", "image/*");
     this.m_xmlhttp.setRequestHeader("Content-length", data.length);
-    this.m_xmlhttp.setRequestHeader("Accept", "application/json, image/*; q=0.9, image/*; q=0.8");
+    this.m_xmlhttp.setRequestHeader("Accept", "image/*, image/*; q=0.9, image/*; q=0.8");
     this.m_xmlhttp.setRequestHeader("Accept-Charset", "UTF-8, *;q=0.8");
 
     try {
