@@ -253,27 +253,6 @@ var jiraConnection = {
         }
       }
       
-      const imageTag = document.getElementById("reviewImageFileOpenInput");
-imageTag.addEventListener('change', function() {
-    document.querySelector(".lst_thumb")
-        .querySelector("li").style.display = "block";
-
-    loadImg(this); // 이미지 파일을 읽어 img src 에 넣는 함수
-});
-
-function loadImg(value) {
-    if(value.files && value.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.querySelector(".lst_thumb")
-                .querySelector("img").setAttribute('src', e.target.result);
-        }
-
-        reader.readAsDataURL(value.files[0]);
-    }
-}
-
       var fileName = aqFileSystem.GetFileName(attachmentFileName);
       var data = "--" + multipart_boundary + "\r\nContent-Disposition: form-data; name=\"file\"; filename=\"" +
         fileName + "\"\r\nContent-Transfer-Encoding: base64\r\n\r\n";
@@ -285,6 +264,21 @@ function loadImg(value) {
       this.m_xmlhttp.setRequestHeader("X-Atlassian-Token", "nocheck");
       this.m_xmlhttp.setRequestHeader("Content-length", data.length);
       this.m_xmlhttp.setRequestHeader("Content-Type", aqString.Format("multipart/form-data; boundary=%s", multipart_boundary));
+	
+     var formData = new FormData();
+         formData.append('imageFile', document.getElementById('formElem')[0].files[0]);
+         fetch('api/reservations/'+reservationInfoId+'/comments?comment='+comment+'&productId='+productId+'&score='+score, {
+        method: 'post',
+        headers: {
+            // 'Content-Type': 'multipart/form-data'
+        },
+        body: formData
+    }).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+        location.href = "mainpage.html";
+    });
+      
 
       try {
         this.m_xmlhttp.send(data);
